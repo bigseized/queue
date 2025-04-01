@@ -1,4 +1,4 @@
-package ru.bigseized.queue.data.model
+package ru.bigseized.queue.domain.model
 
 data class Queue(
     val name: String,

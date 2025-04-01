@@ -27,7 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ru.bigseized.queue.R
-import ru.bigseized.queue.data.model.Queue
+import ru.bigseized.queue.domain.model.Queue
 
 
 @OptIn(ExperimentalMaterial3Api::class)
