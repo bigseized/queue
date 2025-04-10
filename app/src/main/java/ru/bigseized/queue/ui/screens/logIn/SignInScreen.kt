@@ -1,4 +1,4 @@
-package ru.bigseized.queue.ui.screens
+package ru.bigseized.queue.ui.screens.logIn
 
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -40,32 +40,28 @@ import androidx.navigation.NavController
 import ru.bigseized.queue.R
 import ru.bigseized.queue.core.ResultOfRequest
 import ru.bigseized.queue.ui.Navigation
-import ru.bigseized.queue.viewModels.SignUpScreenViewModel
+import ru.bigseized.queue.ui.screens.AlertDialog
+import ru.bigseized.queue.ui.screens.Screen
+import ru.bigseized.queue.ui.screens.ShowProgressBar
+import ru.bigseized.queue.viewModels.SignInScreenViewModel
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUpScreen(
+fun SignInScreen(
     navController: NavController,
-    viewModel: SignUpScreenViewModel = viewModel()
+    viewModel: SignInScreenViewModel = viewModel()
 ) {
     val context = LocalContext.current
 
-    val userName by viewModel.userName.collectAsState()
-    val userEmail by viewModel.userEmail.collectAsState()
+    val userEmail by viewModel.userName.collectAsState()
     val userPassword by viewModel.userPassword.collectAsState()
-    val userPasswordAgain by viewModel.userPasswordAgain.collectAsState()
 
     var isEmailCorrect by remember {
         mutableStateOf(false)
     }
-    var isNameCorrect by remember {
-        mutableStateOf(false)
-    }
     var isPasswordCorrect by remember {
         mutableStateOf(false)
-    }
-    var isPasswordsEqual by remember {
-        mutableStateOf(true)
     }
     var isShowingProgress by remember {
         mutableStateOf(false)
@@ -76,7 +72,6 @@ fun SignUpScreen(
     var errorMessage by remember {
         mutableStateOf("")
     }
-
 
     Box(
         modifier = Modifier
@@ -106,29 +101,16 @@ fun SignUpScreen(
                 isError = !isEmailCorrect,
                 onValueChange = {
                     viewModel.updateEmail(it)
-                    isEmailCorrect = isEmailCorrect(it)
-                },
-                label = {
-                    Text(stringResource(id = R.string.enter_email))
-                }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = userName,
-                isError = !isNameCorrect,
-                onValueChange = {
-                    viewModel.updateName(it)
-                    isNameCorrect = isNameCorrect(it)
+                    isEmailCorrect = it.isNotEmpty()
                 },
                 label = {
                     Text(stringResource(id = R.string.enter_name))
                 },
                 supportingText = {
-                    if (!isNameCorrect) {
-                        Text(text = stringResource(id = R.string.field_should_be_not_empty))
-                    } else {
+                    if (isEmailCorrect) {
                         Text("")
+                    } else {
+                        Text(stringResource(id = R.string.field_should_be_not_empty))
                     }
                 }
             )
@@ -141,48 +123,27 @@ fun SignUpScreen(
                 visualTransformation = PasswordVisualTransformation(),
                 onValueChange = {
                     viewModel.updatePassword(it)
-                    isPasswordCorrect = isPasswordCorrect(it)
-                    isPasswordsEqual = it == userPasswordAgain
+                    isPasswordCorrect = it.isNotEmpty()
                 },
                 label = {
                     Text(stringResource(id = R.string.enter_password))
                 },
                 supportingText = {
-                    if (!isPasswordCorrect) {
-                        Text(text = stringResource(id = R.string.password_is_too_easy))
-                    } else {
+                    if (isPasswordCorrect) {
                         Text("")
-                    }
-                }
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            OutlinedTextField(
-                modifier = Modifier.fillMaxWidth(),
-                value = userPasswordAgain,
-                maxLines = 1,
-                isError = !isPasswordsEqual,
-                visualTransformation = PasswordVisualTransformation(),
-                onValueChange = {
-                    viewModel.updatePasswordAgain(it)
-                    isPasswordsEqual = userPassword == it
-                },
-                label = {
-                    Text(stringResource(id = R.string.enter_password_again))
-                },
-                supportingText = {
-                    if (!isPasswordsEqual) {
-                        Text(text = stringResource(id = R.string.passwords_are_not_equal))
                     } else {
-                        Text("")
+                        Text(stringResource(id = R.string.field_should_be_not_empty))
                     }
                 }
             )
             Spacer(modifier = Modifier.height(20.dp))
             FilledTonalButton(
+                modifier = Modifier
+                    .fillMaxWidth(),
                 onClick = {
-                    if (isPasswordsEqual && isEmailCorrect && isPasswordCorrect && isNameCorrect) {
+                    if (isPasswordCorrect && isEmailCorrect) {
                         isShowingProgress = true
-                        viewModel.signUpUser()
+                        viewModel.signIn()
                     } else {
                         Toast.makeText(
                             context,
@@ -190,12 +151,10 @@ fun SignUpScreen(
                             Toast.LENGTH_SHORT
                         ).show()
                     }
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
+                }
             ) {
                 Text(
-                    stringResource(id = R.string.sign_up),
+                    stringResource(id = R.string.sign_in),
                     fontSize = 20.sp,
                     modifier = Modifier.padding(4.dp)
                 )
@@ -206,12 +165,12 @@ fun SignUpScreen(
             verticalAlignment = Alignment.Bottom,
             horizontalArrangement = Arrangement.Center
         ) {
-            Text(text = stringResource(id = R.string.already_have_account))
+            Text(text = stringResource(id = R.string.already_havent_account))
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = stringResource(id = R.string.sign_in),
+                text = stringResource(id = R.string.sign_up),
                 Modifier.clickable {
-                    navController.navigate(Screen.SignInScreen.name)
+                    navController.navigate(Screen.SignUpScreen.name)
                 }
             )
         }
@@ -247,18 +206,4 @@ fun SignUpScreen(
             }
         }
     }
-}
-
-fun isEmailCorrect(email: String): Boolean {
-    val emailRegex = Regex("^\\S+@\\S+\\.\\S+$")
-    return emailRegex.matches(email)
-}
-
-fun isNameCorrect(name: String): Boolean {
-    return name.isNotEmpty()
-}
-
-fun isPasswordCorrect(password: String): Boolean {
-    val passwordRegex = Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$")
-    return passwordRegex.matches(password)
 }

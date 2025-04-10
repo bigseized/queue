@@ -1,4 +1,4 @@
-package ru.bigseized.queue.ui.screens
+package ru.bigseized.queue.ui.screens.main
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -23,12 +23,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import ru.bigseized.queue.R
 import ru.bigseized.queue.domain.model.Queue
+import ru.bigseized.queue.ui.screens.Screen
 
 
 @OptIn(ExperimentalMaterial3Api::class)
