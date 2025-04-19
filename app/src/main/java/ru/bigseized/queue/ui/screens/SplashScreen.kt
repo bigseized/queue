@@ -20,12 +20,14 @@ import kotlinx.coroutines.launch
 import ru.bigseized.queue.R
 import ru.bigseized.queue.core.ResultOfRequest
 import ru.bigseized.queue.ui.Navigation
+import ru.bigseized.queue.viewModels.MainScreenViewModel
 import ru.bigseized.queue.viewModels.SplashScreenViewModel
 
 @Composable
 fun SplashScreen(
     navController: NavController,
-    viewModel: SplashScreenViewModel = viewModel()
+    viewModel: SplashScreenViewModel = viewModel(),
+    mainScreenViewModel: MainScreenViewModel,
 ) {
     val scale = remember {
         androidx.compose.animation.core.Animatable(0f)
@@ -42,7 +44,7 @@ fun SplashScreen(
                     targetValue = 0.7f,
                     animationSpec = spring(
                         dampingRatio = Spring.DampingRatioHighBouncy,
-                        stiffness = Spring.StiffnessVeryLow
+                        stiffness = Spring.StiffnessMediumLow
                     )
                 )
             }
@@ -65,6 +67,19 @@ fun SplashScreen(
             contentDescription = "Logo",
             modifier = Modifier.scale(scale.value)
         )
+    }
+
+    LaunchedEffect(viewModel.result) {
+        viewModel.result.collect { result ->
+            when (result) {
+                is ResultOfRequest.Success -> {
+                    mainScreenViewModel.starting(true)
+                    // Sharing to window of queue info about its id
+                }
+
+                else -> {}
+            }
+        }
     }
 }
 
