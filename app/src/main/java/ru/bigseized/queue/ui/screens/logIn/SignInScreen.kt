@@ -43,6 +43,7 @@ import ru.bigseized.queue.ui.Navigation
 import ru.bigseized.queue.ui.screens.AlertDialog
 import ru.bigseized.queue.ui.screens.Screen
 import ru.bigseized.queue.ui.screens.ShowProgressBar
+import ru.bigseized.queue.viewModels.MainScreenViewModel
 import ru.bigseized.queue.viewModels.SignInScreenViewModel
 
 
@@ -50,7 +51,8 @@ import ru.bigseized.queue.viewModels.SignInScreenViewModel
 @Composable
 fun SignInScreen(
     navController: NavController,
-    viewModel: SignInScreenViewModel = viewModel()
+    viewModel: SignInScreenViewModel = viewModel(),
+    mainScreenViewModel: MainScreenViewModel,
 ) {
     val context = LocalContext.current
 
@@ -191,6 +193,7 @@ fun SignInScreen(
                     is ResultOfRequest.Success -> {
                         navController.navigate(Navigation.MAIN_ROUTE) {
                             popUpTo(Navigation.AUTH_ROUTE)
+                            mainScreenViewModel.starting()
                         }
                     }
                     is ResultOfRequest.Error -> {
