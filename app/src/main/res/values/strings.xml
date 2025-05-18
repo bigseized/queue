@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">КУЕУЕ</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="welcome">Добро пожаловать в КУЕУЕ</string>
+    <string name="enter_email">Введите электронную почту</string>
+    <string name="enter_name">Введите имя</string>
+    <string name="enter_password">Введите пароль</string>
+    <string name="enter_password_again">Введите пароль еще раз</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="already_have_account">Уже есть аккаунт?</string>
+    <string name="already_havent_account">Еще нет аккаунта?</string>
+    <string name="sign_in">Войти</string>
+    <string name="passwords_are_not_equal">Пароли не совпадают</string>
+    <string name="password_is_too_easy">Пароль слишком легкий</string>
+    <string name="field_should_be_not_empty">Поле не должно быть пустым</string>
+    <string name="not_all_fields_filled">Не все поля заполнены</string>
+    <string name="error">Ошибка</string>
+    <string name="profile">Ваш профиль</string>
+    <string name="log_out">Выйти</string>
+    <string name="settings">Настройки</string>
+    <string name="your_username">Ваше имя</string>
+    <string name="success_update_username">Имя успешно изменено</string>
+    <string name="adding_queue">Добавление очереди</string>
+    <string name="name_of_queue">Имя очереди</string>
+    <string name="enter_name_of_queue">Введите имя очереди</string>
+    <string name="add">Добавить</string>
+    <string name="code_of_queue">Код очереди</string>
+    <string name="enter_code">Введите код</string>
+    <string name="queue">Очередь</string>
+    <string name="create">Создать</string>
+    <string name="no_queues">Очередей еще нет</string>
+    <string name="the_next">Следующий</string>
+    <string name="return_to_queue">Вернуться в очередь</string>
+    <string name="is_all_users_are_admin">Все пользователи администраторы</string>
+    <string name="make_admin">Сделать администратором</string>
+    <string name="kick_out">Убрать из очереди</string>
+    <string name="you_are_the_next">Вы следующий</string>
+</resources>

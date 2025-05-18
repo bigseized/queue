@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538046035764",
+    "project_id": "queue-288",
+    "storage_bucket": "queue-288.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538046035764:android:3e76a15fabcc745dbe5761",
+        "android_client_info": {
+          "package_name": "ru.buba.queue"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDflYw-7WucfnadGZW3StC0G1JsF_uU5GM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
