@@ -1,5 +1,8 @@
 package ru.bigseized.queue.ui.screens.main
 
+import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -26,6 +29,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -33,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import ru.bigseized.queue.R
+import ru.bigseized.queue.core.NotificationService
 import ru.bigseized.queue.core.ResultOfRequest
 import ru.bigseized.queue.domain.DTO.QueueDTO
 import ru.bigseized.queue.ui.screens.Screen
@@ -40,6 +45,7 @@ import ru.bigseized.queue.ui.screens.ShowProgressBar
 import ru.bigseized.queue.viewModels.MainScreenViewModel
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
