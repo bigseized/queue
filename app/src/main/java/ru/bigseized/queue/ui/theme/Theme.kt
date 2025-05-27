@@ -14,6 +14,64 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import ru.bigseized.queue.ui.theme.md_theme_dark_background
+import ru.bigseized.queue.ui.theme.md_theme_dark_error
+import ru.bigseized.queue.ui.theme.md_theme_dark_errorContainer
+import ru.bigseized.queue.ui.theme.md_theme_dark_inverseOnSurface
+import ru.bigseized.queue.ui.theme.md_theme_dark_inversePrimary
+import ru.bigseized.queue.ui.theme.md_theme_dark_inverseSurface
+import ru.bigseized.queue.ui.theme.md_theme_dark_onBackground
+import ru.bigseized.queue.ui.theme.md_theme_dark_onError
+import ru.bigseized.queue.ui.theme.md_theme_dark_onErrorContainer
+import ru.bigseized.queue.ui.theme.md_theme_dark_onPrimary
+import ru.bigseized.queue.ui.theme.md_theme_dark_onPrimaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_dark_onSecondary
+import ru.bigseized.queue.ui.theme.md_theme_dark_onSecondaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_dark_onSurface
+import ru.bigseized.queue.ui.theme.md_theme_dark_onSurfaceVariant
+import ru.bigseized.queue.ui.theme.md_theme_dark_onTertiary
+import ru.bigseized.queue.ui.theme.md_theme_dark_onTertiaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_dark_outline
+import ru.bigseized.queue.ui.theme.md_theme_dark_outlineVariant
+import ru.bigseized.queue.ui.theme.md_theme_dark_primary
+import ru.bigseized.queue.ui.theme.md_theme_dark_primaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_dark_scrim
+import ru.bigseized.queue.ui.theme.md_theme_dark_secondary
+import ru.bigseized.queue.ui.theme.md_theme_dark_secondaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_dark_surface
+import ru.bigseized.queue.ui.theme.md_theme_dark_surfaceTint
+import ru.bigseized.queue.ui.theme.md_theme_dark_surfaceVariant
+import ru.bigseized.queue.ui.theme.md_theme_dark_tertiary
+import ru.bigseized.queue.ui.theme.md_theme_dark_tertiaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_light_background
+import ru.bigseized.queue.ui.theme.md_theme_light_error
+import ru.bigseized.queue.ui.theme.md_theme_light_errorContainer
+import ru.bigseized.queue.ui.theme.md_theme_light_inverseOnSurface
+import ru.bigseized.queue.ui.theme.md_theme_light_inversePrimary
+import ru.bigseized.queue.ui.theme.md_theme_light_inverseSurface
+import ru.bigseized.queue.ui.theme.md_theme_light_onBackground
+import ru.bigseized.queue.ui.theme.md_theme_light_onError
+import ru.bigseized.queue.ui.theme.md_theme_light_onErrorContainer
+import ru.bigseized.queue.ui.theme.md_theme_light_onPrimary
+import ru.bigseized.queue.ui.theme.md_theme_light_onPrimaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_light_onSecondary
+import ru.bigseized.queue.ui.theme.md_theme_light_onSecondaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_light_onSurface
+import ru.bigseized.queue.ui.theme.md_theme_light_onSurfaceVariant
+import ru.bigseized.queue.ui.theme.md_theme_light_onTertiary
+import ru.bigseized.queue.ui.theme.md_theme_light_onTertiaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_light_outline
+import ru.bigseized.queue.ui.theme.md_theme_light_outlineVariant
+import ru.bigseized.queue.ui.theme.md_theme_light_primary
+import ru.bigseized.queue.ui.theme.md_theme_light_primaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_light_scrim
+import ru.bigseized.queue.ui.theme.md_theme_light_secondary
+import ru.bigseized.queue.ui.theme.md_theme_light_secondaryContainer
+import ru.bigseized.queue.ui.theme.md_theme_light_surface
+import ru.bigseized.queue.ui.theme.md_theme_light_surfaceTint
+import ru.bigseized.queue.ui.theme.md_theme_light_surfaceVariant
+import ru.bigseized.queue.ui.theme.md_theme_light_tertiary
+import ru.bigseized.queue.ui.theme.md_theme_light_tertiaryContainer
 
 
 private val LightColors = lightColorScheme(
@@ -85,7 +143,7 @@ private val DarkColors = darkColorScheme(
 fun QUEUETheme(
     useDarkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
